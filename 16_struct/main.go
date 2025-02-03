@@ -2,18 +2,24 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 // import "structs"
 
 //struct are custom DS
 
-// type order struct{
-//     id string
-//     amount float32
-//     status string
-//     createdAt time.Time // nanosecond precision + accurate
-// }
+type customer struct{
+	name string
+	phone string
+}
+type order struct {
+	id        string
+	amount    float32
+	status    string
+	createdAt time.Time // nanosecond precision + accurate
+	customer // struct embedding
+}
 
 //constructor
 // func neworder(id string, amount float32, status string) *order{
@@ -64,10 +70,24 @@ func main() {
 	// myorder:=neworder("1",50.00,"received")
 	// fmt.Println(myorder.amount)
 
-    //inline struct
+	//inline struct
 	langauge := struct {
 		name   string
 		isGood bool
 	}{"golang", true}
 	fmt.Println(langauge)
+
+	newcustomer:=customer{
+		name:"tushar",
+		phone:"1234567890",
+	}
+	neworder:=order{
+		id:"1",
+		amount:30,
+		status: "recieved",
+		customer: newcustomer, //or we can do customer() and add the data
+	}
+	fmt.Println(neworder)
+	fmt.Println(neworder.customer)
+
 }
