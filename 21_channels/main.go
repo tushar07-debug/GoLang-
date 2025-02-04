@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 //send
@@ -27,7 +26,6 @@ import (
 //     fmt.Println("processing...")
 //     // done<-true
 // }
-
 
 // func emailsender(emailchan chan string, done chan bool) {
 // 	defer func() { done <- true }()
