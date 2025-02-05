@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"os"
 )
 
@@ -80,32 +79,38 @@ func main() {
 	// fmt.Println(n)
 
 	//read and write to anothetr file (streaming fasion)
-	f1, err := os.Open("example.txt")
+	// f1, err := os.Open("example.txt")
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// defer f1.Close()
+	// f2, err := os.Create("example2.txt")
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// defer f2.Close()
+	// // io.Copy(f2, f1)
+	// reader := bufio.NewReader(f1)
+	// writer := bufio.NewWriter(f2)
+	// for {
+	// 	str, err := reader.ReadByte()
+	// 	if err != nil {
+	// 		if err.Error() != "EOF" {
+	// 			panic(err)
+	// 		}
+	// 		break
+	// 	}
+	// 	e := writer.WriteByte(str)
+	// 	if e != nil {
+	// 		panic(e)
+	// 	}
+	// }
+	// writer.Flush()
+
+	//delete file
+	err := os.Remove("example2.txt")
 	if err != nil {
 		panic(err)
 	}
-	defer f1.Close()
-	f2, err := os.Create("example2.txt")
-	if err != nil {
-		panic(err)
-	}
-	defer f2.Close()
-	// io.Copy(f2, f1)
-	reader := bufio.NewReader(f1)
-	writer := bufio.NewWriter(f2)
-	for {
-		str, err := reader.ReadByte()
-		if err != nil {
-			if err.Error() != "EOF" {
-				panic(err)
-			}
-			break
-		}
-		e := writer.WriteByte(str)
-		if e != nil {
-			panic(e)
-		}
-	}
-	writer.Flush()
 
 }
